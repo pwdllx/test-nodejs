@@ -1,5 +1,4 @@
 export interface IModel {
   serialize(): { [name: string]: string };
 }
-
-export * from './brand';
+//export * as Brand from './brand';
