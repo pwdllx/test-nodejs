@@ -1,5 +1,5 @@
-import { IModel } from '@model';
-import { Requester } from 'requester';
+import { IModel } from '../model/IModel';
+import { Requester } from './requester';
 
 export abstract class Repository<T extends IModel> {
   #requester;
@@ -11,6 +11,7 @@ export abstract class Repository<T extends IModel> {
 
   public async create(model: T): Promise<T> {
     try {
+      console.log(model);
       const data = await this.#requester.post(model.serialize());
       return Promise.resolve(<T>data);
     } catch (error) {
