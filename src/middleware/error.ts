@@ -5,7 +5,6 @@ export function restJson(
   req: Request,
   res: Response
 ): void {
-  console.log('test');
   res.status(200);
   res.json(err);
 }

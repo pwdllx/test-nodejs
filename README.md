@@ -8,7 +8,6 @@ Une fois le projet téléchargé et installé vous aurez une heure pour effectue
 
 À l'issue du temps impartie vous me ferez une pull request depuis une branche intitulé suivant le partern suivant: `test/{votre_nom}_{votre_prenom}`.
 
-
 ### Installation
 
 1. Commence par cloner le dépôt sur votre environnement local
@@ -22,7 +21,6 @@ $ git clone git@github.com:pwdllx/test-nodejs.git
 ```Shell
 $ cd test-nodejs && npm ci
 ```
-
 
 ### Lancement
 
