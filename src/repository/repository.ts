@@ -1,39 +1,36 @@
 import { IModel } from '../model/IModel';
 import { Requester } from './requester';
 
-export abstract class Repository<T extends IModel> {
-  #requester;
+export class Repository<T extends IModel> {
+  private path = this.constructor.name.replace('Repository', '').toLowerCase();
+  #requester = new Requester(`${process.env.API_URL}/${this.path}`);
 
-  constructor() {
-    const path = this.constructor.name.replace('Repository', '').toLowerCase();
-    this.#requester = new Requester(`${process.env.API_URL}/${path}`);
-  }
+  constructor() {}
 
   public async create(model: T): Promise<T> {
     try {
-      console.log(model);
       const data = await this.#requester.post(model.serialize());
-      return Promise.resolve(<T>data);
+      return <T>data;
     } catch (error) {
-      return Promise.reject(error);
+      throw error;
     }
   }
 
   public async findAll(): Promise<T[]> {
     try {
       const data = await this.#requester.get();
-      return Promise.resolve(<T[]>data);
+      return <T[]>data;
     } catch (error) {
-      return Promise.reject(error);
+      throw error;
     }
   }
 
   public async find(id: string): Promise<T> {
     try {
       const data = await this.#requester.get(id);
-      return Promise.resolve(<T>data);
+      return <T>data;
     } catch (error) {
-      return Promise.reject(error);
+      throw error;
     }
   }
 }

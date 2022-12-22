@@ -15,7 +15,7 @@ export class Brand implements IModel {
     this.#title = title.substring(0, 20);
   }
 
-  public serialize(): { [name: string]: string } {
+  public serialize(): Record<string, string> {
     return { title: this.#title };
   }
 }

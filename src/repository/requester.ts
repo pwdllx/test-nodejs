@@ -3,7 +3,7 @@ import axios from 'axios';
 export class Requester {
   constructor(private path: string) {}
 
-  async post(data: { [name: string]: string }) {
+  async post(data: Record<string, string>) {
     const req = await axios.post(this.path, data);
     return req.data;
   }
@@ -11,7 +11,9 @@ export class Requester {
   async get(id?: string) {
     const req = id
       ? await axios.get(this.path)
-      : await axios.get(this.path + `/${id}`);
+      : await axios.get(`${this.path}/${id}`);
     return req.data;
   }
 }
+
+module.exports = Requester;
