@@ -7,7 +7,7 @@ import application from './application';
 
 const server: Server = createServer(application);
 server
-  .listen({ host: process.env.APP_HOST, port: process.env.APP_PORT })
+  .listen({ host: process.env.APPLICATION_HOST, port: process.env.APPLICATION_PORT })
   .on('listening', () => {
     const adressInfo: string | AddressInfo = server.address();
     console.log(

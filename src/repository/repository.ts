@@ -1,18 +1,23 @@
 import { IModel } from '@model';
-import { Requester } from 'requester';
+import fetch from 'node-fetch';
 
 export abstract class Repository<T extends IModel> {
-  #requester;
+  #base_uri;
 
   constructor() {
     const path = this.constructor.name.replace('Repository', '').toLowerCase();
-    this.#requester = new Requester(`${process.env.API_URL}/${path}`);
+    this.#base_uri = `${process.env.API_URL}/${path}`;
   }
 
   public async create(model: T): Promise<T> {
     try {
-      const data = await this.#requester.post(model.serialize());
-      return Promise.resolve(<T>data);
+      const response = await fetch(this.#base_uri, { body: model.serialize(), method: 'POST'});
+      if (response.ok) {
+        const data = await response.json();
+        return Promise.resolve(<T>data);
+      } else {
+        throw new Error("Something wrong happen");
+      }
     } catch (error) {
       return Promise.reject(error);
     }
@@ -20,8 +25,13 @@ export abstract class Repository<T extends IModel> {
 
   public async findAll(): Promise<T[]> {
     try {
-      const data = await this.#requester.get();
-      return Promise.resolve(<T[]>data);
+      const response = await fetch(this.#base_uri);
+      if (response.ok) {
+        const data = await response.json();
+        return Promise.resolve(<T[]>data);
+      } else {
+        throw new Error("Something wrong happen");
+      }
     } catch (error) {
       return Promise.reject(error);
     }
@@ -29,8 +39,13 @@ export abstract class Repository<T extends IModel> {
 
   public async find(id: string): Promise<T> {
     try {
-      const data = await this.#requester.get(id);
-      return Promise.resolve(<T>data);
+      const response = await fetch(`${this.#base_uri}/${id}`);
+      if (response.ok) {
+        const data = await response.json();
+        return Promise.resolve(<T>data);
+      } else {
+        throw new Error("Something wrong happen");
+      }
     } catch (error) {
       return Promise.reject(error);
     }

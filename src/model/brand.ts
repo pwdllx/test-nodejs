@@ -1,4 +1,4 @@
-import { IModel } from './index';
+import { IModel } from './model';
 
 export class Brand implements IModel {
   #title: string;
@@ -15,5 +15,12 @@ export class Brand implements IModel {
     this.#title = title.substring(0, 20);
   }
 
-  public serialize():{[name:string]:string}{return{title: this.#title}}
+  public serialize(){
+    try {
+      return JSON.stringify({title: this.#title});
+    } catch (error) {
+      console.log(error);
+      throw new Error("Something went wrong");
+    }
+  }
 }
