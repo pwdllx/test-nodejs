@@ -1,0 +1,21 @@
+{
+  "name": "pdb_test",
+  "dockerComposeFile": "compose.yaml",
+  "service": "test",
+  "workspaceFolder": "/srv/www/pdb_test",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        "aaron-bond.better-comments",
+        "EditorConfig.EditorConfig",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "stylelint.vscode-stylelint"
+      ]
+    }
+  }
+}

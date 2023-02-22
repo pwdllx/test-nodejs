@@ -1,9 +1,32 @@
-.git
-.git-crypt
-.vscode
-dist
-doc
-node_modules
+# builds #
+##########
+app/**
+
+# dependencies #
+################
+node_modules/**
+
+package-lock.json
+
+# ide #
+#######
+.idea/**
+.vscode/**
+
+# miscellaneous #
+#################
+.git/**
+logs/**
+
+.env
+
+# os generated files #
+######################
+.DS_Store
+
+# tests #
+#########
+coverage
+report
 
 !.*
-package-lock.json

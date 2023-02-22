@@ -1,0 +1,24 @@
+name: pdb
+services:
+  test:
+    image: pdb/test:$NODE_ENV
+    build:
+      context: .
+      target: $NODE_ENV
+      args:
+        APPLICATION_PORT: ${APPLICATION_PORT?:Application port is mandatory}
+    container_name: test
+    volumes:
+      - type: volume
+        source: pdb_test
+        target: /srv/www/pdb_test
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  pdb_test:
+    name: pdb_test
+
+networks:
+  pdb_network:
+    external: true

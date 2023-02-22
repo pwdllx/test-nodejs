@@ -1,5 +1,27 @@
-.vscode
-.DS_Store
+# builds #
+##########
+app
+
+# dependencies #
+################
 node_modules
 
+# ide #
+#######
+.idea
+.vscode
+
+# miscellaneous #
+#################
+logs
+
 .env
+
+# os generated files #
+######################
+.DS_Store
+
+# tests #
+#########
+coverage
+report
