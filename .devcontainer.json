@@ -4,6 +4,7 @@
   "service": "test",
   "workspaceFolder": "/srv/www/pdb_test",
   "shutdownAction": "stopCompose",
+  "mounts": ["source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind"],
   "customizations": {
     "vscode": {
       "extensions": [

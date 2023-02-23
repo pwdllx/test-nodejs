@@ -20,23 +20,6 @@ ARG WORKING_DIRECTORY
 WORKDIR $WORKING_DIRECTORY
 VOLUME $WORKING_DIRECTORY
 
-RUN <<-eot
-  apk update
-  apk upgrade --no-cache
-  apk add git
-eot
-
-RUN <<-eot
-  if ([ ! -d "$WORKING_DIRECTORY/node_modules" ] || [ ! "$(ls -A $WORKING_DIRECTORY/node_modules)" ])
-  then
-    echo "Install dependencies"
-    npm ci
-  else
-    echo "Skip dependencies installation"
-  fi
-  sleep 2.5s
-eot
-
 COPY <<-launch.json <<-settings.json ./.vscode/
   {
     "version": "0.2.0",
@@ -79,6 +62,25 @@ launch.json
     "less.validate": false
   }
 settings.json
+
+RUN <<-eot
+  apk update
+  apk upgrade --no-cache
+  apk add git gnupg
+eot
+
+RUN cp $WORKING_DIRECTORY/.env.example $WORKING_DIRECTORY/.env
+
+RUN <<-eot
+  if ([ ! -d "$WORKING_DIRECTORY/node_modules" ] || [ ! "$(ls -A $WORKING_DIRECTORY/node_modules)" ])
+  then
+    echo "Install dependencies"
+    npm ci
+  else
+    echo "Skip dependencies installation"
+  fi
+  sleep 2.5s
+eot
 
 CMD npm run dev
 

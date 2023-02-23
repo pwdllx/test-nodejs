@@ -1,12 +1,12 @@
 name: pdb
 services:
   test:
-    image: pdb/test:$NODE_ENV
+    image: pdb/test:${NODE_ENV:-development}
     build:
       context: .
-      target: $NODE_ENV
+      target: ${NODE_ENV:-development}
       args:
-        APPLICATION_PORT: ${APPLICATION_PORT?:Application port is mandatory}
+        APPLICATION_PORT: ${APPLICATION_PORT:-3000}
     container_name: test
     volumes:
       - type: volume
