@@ -1,31 +1,37 @@
-# builds #
-##########
+#=======
+# BUILDS
+#=======
 app/**
 
-# dependencies #
-################
+#=============
+# DEPENDENCIES
+#=============
 node_modules/**
 
 package-lock.json
 
-# ide #
-#######
+#====
+# IDE
+#====
 .idea/**
 .vscode/**
 
-# miscellaneous #
-#################
+#==============
+# MISCELLANEOUS
+#==============
 .git/**
 logs/**
 
 .env
 
-# os generated files #
-######################
+#===================
+# OS GENERATED FILES
+#===================
 .DS_Store
 
-# tests #
-#########
+#======
+# TESTS
+#======
 coverage
 report
 

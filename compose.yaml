@@ -7,17 +7,19 @@ services:
       target: ${NODE_ENV:-development}
       args:
         APPLICATION_PORT: ${APPLICATION_PORT:-3000}
+    command: >
+      sh -c "
+        cp -n .env.example .env;
+        ([ ! -d node_modules ] || [ ! $(ls -A node_modules) ]) && npm ci;
+        npm run dev
+      "
     container_name: test
     volumes:
-      - type: volume
-        source: pdb_test
+      - type: bind
+        source: $PWD
         target: /srv/www/pdb_test
     security_opt:
       - no-new-privileges:true
-
-volumes:
-  pdb_test:
-    name: pdb_test
 
 networks:
   pdb_network:

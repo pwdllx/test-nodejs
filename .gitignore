@@ -1,27 +1,33 @@
-# builds #
-##########
+#=======
+# BUILDS
+#=======
 app
 
-# dependencies #
-################
+#=============
+# DEPENDENCIES
+#=============
 node_modules
 
-# ide #
-#######
+#====
+# IDE
+#====
 .idea
 .vscode
 
-# miscellaneous #
-#################
+#==============
+# MISCELLANEOUS
+#==============
 logs
 
 .env
 
-# os generated files #
-######################
+#===================
+# OS GENERATED FILES
+#===================
 .DS_Store
 
-# tests #
-#########
+#======
+# TESTS
+#======
 coverage
 report

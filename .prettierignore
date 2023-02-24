@@ -1,11 +1,42 @@
-.git
-.git-crypt
-.vscode
-dist/*
-doc/*
-node_modules/*
-
+#===================
+# INCLUDE EVERYTHING
+#===================
 !.*
-*.json
-.babelrc
-.eslintrc
+!*.*
+
+#=======
+# BUILDS
+#=======
+app/**
+
+#=============
+# DEPENDENCIES
+#=============
+node_modules/**
+
+package-lock.json
+
+#====
+# IDE
+#====
+.idea/**
+.vscode/**
+
+#==============
+# MISCELLANEOUS
+#==============
+.git/**
+logs/**
+
+.env
+
+#===================
+# OS GENERATED FILES
+#===================
+.DS_Store
+
+#======
+# TESTS
+#======
+coverage
+report
