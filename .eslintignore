@@ -4,6 +4,7 @@
 dist
 doc
 node_modules
+.vscode/settings.json
 
 !.*
 package-lock.json
