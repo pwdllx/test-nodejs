@@ -5,7 +5,10 @@ describe('Requester', () => {
   const requester = new Requester(baseUrl);
 
   it('should fetch data using GET', async () => {
-    const data = { id: '1234', title: 'Porsche' };
+    const data = [
+      { id: '1234', title: 'Porsche' },
+      { id: '1324', title: 'Polestar' },
+    ];
     const mockResponse = { json: jest.fn().mockResolvedValue(data), ok: true };
     global.fetch = jest
       .fn()
@@ -30,22 +33,22 @@ describe('Requester', () => {
     expect(fetch).toHaveBeenCalledWith(`${baseUrl}/brand/1234`);
   });
 
-  it('should put data using PUT', async () => {
+  it('should post data', async () => {
     const data = { title: 'Geox' };
     const mockResponse = { json: jest.fn().mockResolvedValue(data), ok: true };
     global.fetch = jest
       .fn()
       .mockResolvedValue(mockResponse as unknown as Response);
 
-    const result = await requester.put('brand', data);
+    const result = await requester.post(data);
 
     expect(result).toEqual(data);
-    expect(fetch).toHaveBeenCalledWith(`${baseUrl}/brand`, {
+    expect(fetch).toHaveBeenCalledWith(`${baseUrl}`, {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
       },
-      method: 'PUT',
+      method: 'POST',
     });
   });
 });
