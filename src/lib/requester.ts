@@ -11,7 +11,7 @@ export class Requester {
     if (!response.ok) {
       const errorData = await response.json();
       throw new Error(
-        `Request failed with status ${response.status}: ${JSON.stringify(
+        `Request failed with status ${response.status} : ${JSON.stringify(
           errorData
         )}`
       );
