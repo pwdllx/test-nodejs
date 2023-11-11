@@ -37,7 +37,7 @@ Tu peux maintenant te rendre à l'adresse http://localhost:3000/.
 
 Voilà vous avez tous les outils et instructions nécessaires pour vous lancez 😎
 
-### Construction de la Classe Requester
+## Construction de la Classe Requester
 
 J'ai élaboré la classe Requester pour simplifier et centraliser la gestion des requêtes HTTP dans cette application. Cette classe agit comme une abstraction autour de l'API Fetch native de JavaScript, offrant une interface plus conviviale pour interagir avec les points d'extrémité de notre API REST.
 
@@ -66,3 +66,7 @@ Uniformisation du code avec Eslint : npm run analysis:lint:eslint -- --fix
 Lancement de l'analyse globale : npm run analysis
 
 Utilisation de jest pour un test de la classe requester en mock.
+
+## Amélioration possible
+
+Empêcher l'ajout de brand lorsque l'utilisateur n'a pas insérer de title : !req.body.title ou req.body.title.trim() === ""

@@ -1,5 +1,3 @@
-import { IModel } from '../interfaces/model';
-
 export class Requester {
   private baseUrl: string;
 
