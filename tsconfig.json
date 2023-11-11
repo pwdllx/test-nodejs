@@ -16,10 +16,12 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "lib": [
-      "ESNext"
+      "ESNext",
+      "DOM"
     ],
     "types": [
-      "node"
+      "node",
+      "jest"
     ],
     "paths": {
       "@const": [
