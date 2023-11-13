@@ -1,40 +1,40 @@
-### Instruction
+# Conception du module Requester
 
-Projet NodeJS dont le but est de permettre une évaluation de vos capacités à développer sur cet environnement.
-Une fois le projet téléchargé et installé vous aurez une heure pour effectuer deux principales tâches :
+La première tâche à effectuer était de concevoir le module Requester:
 
-- [x] Concevoir un module, requester dont l'utilisation est faite dans le fichier `src/repository/repository.ts`. Ce module devra permettre d'effectuer des requêtes à une api rest ici fournit par le module json-server.
-- [x] Corriger les erreurs détectables par les scripts d'analyse statique du code.
+Au sein du fichier src/repository/repository.ts, on retrouve une fonction create, une fonction findAll, ainsi qu'une fonction findById.
 
-À l'issue du temps impartie vous me ferez une pull request depuis une branche intitulé suivant le partern suivant: `test/{votre_nom}_{votre_prenom}`.
+J'ai donc créé un fichier *requester.ts* au sein du quel j'ai implémenté ces fonctions.
 
-
-### Installation
-
-1. Commence par cloner le dépôt sur votre environnement local
-
-```Shell
-$ git clone git@github.com:pwdllx/test-nodejs.git
-```
-
-2. Utilise le gestionnaire de paquet ([npm](https://www.npmjs.com/)) pour installer toutes les dépendances requises
-
-```Shell
-$ cd test-nodejs && npm ci
-```
+Je me suis aidé de Postman afin de tester les différentes requêtes. Voici les 3 captures d'écran correspondant aux différentes fonctions  :
 
 
-### Lancement
+<img src="images/create.PNG">
 
-Pour lancer le projet sur ton environnement local utilise la commande
+<img src="images/getAll.PNG">
 
-```Shell
-$ npm run dev
-```
+<img src="images/getById.PNG">
 
-**Note**: Il te faudra créer un fichier `.env` et le renseigner en te basant sur l'exemple `.env.example`
 
-Pour te facilité l'inspection du code pendant son exécution, tu peux te connecter au port `9229` avec tes [outils](https://nodejs.org/en/docs/guides/debugging-getting-started/#inspector-clients) habituels.
-Tu peux maintenant te rendre à l'adresse http://localhost:3000/.
+## Correction des erreurs via le script d'analyse du code
 
-Voilà vous avez tous les outils et instructions nécessaires pour vous lancez 😎
+La deuxième tâche à effectuer était de corriger les erreurs détectables par les scripts d'analyse statique du code:
+
+Afin de corriger les erreurs via le script d'analyse du code, j'ai utilisé la commande : *npm run analysis*
+
+Au cours des différents lancements de cette commande, elle m'a retourné les erreurs suivantes: 
+
+* Circular Dependency 
+* Import Order 
+* Code Style Issues
+* format error: unexpected "\r".
+
+J'ai résolu les erreurs circular dependency et import order en modifiant le code.
+
+J'ai résolu code style issues en utilisant la commande:  *npx prettier --write .*
+
+Et j'ai enfin résolu l'erreur de format en passant les fichier concerné du format CRLF au format LF.
+
+Après etre venu a bout de toutes ces erreurs, voici une capture d'écran de la commande: *npm run analysis*
+
+<img src="images/analysis.PNG">

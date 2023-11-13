@@ -1,6 +1,5 @@
 import { brand } from '@controller';
 import { error } from '@middleware';
-
 import { Router } from 'express';
 
 const router: Router = Router({ caseSensitive: true });
