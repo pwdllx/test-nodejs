@@ -1,7 +1,8 @@
 import { ERROR } from '@const';
-import { Brand } from '@model';
 import { BrandRepository } from '@repository';
 import { NextFunction, Request, Response } from 'express';
+
+import { Brand } from '../../model/brand';
 
 export async function addBrand(
   req: Request,

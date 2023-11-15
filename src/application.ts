@@ -1,6 +1,6 @@
+import routes from '@route';
 import { json, urlencoded } from 'body-parser';
 import express, { Express } from 'express';
-import routes from '@route';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
