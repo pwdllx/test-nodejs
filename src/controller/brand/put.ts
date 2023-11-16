@@ -9,6 +9,7 @@ export async function addBrand(
   next: NextFunction
 ): Promise<void> {
   try {
+    console.log('im herreee');
     const brand = new Brand(req.body.title);
     const brandRepo = new BrandRepository();
     const data = await brandRepo.create(brand);

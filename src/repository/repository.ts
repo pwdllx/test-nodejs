@@ -1,5 +1,5 @@
 import { IModel } from '@model';
-import { Requester } from 'requester';
+import { Requester } from '../helpers/requester';
 
 export abstract class Repository<T extends IModel> {
   #requester;
@@ -20,7 +20,7 @@ export abstract class Repository<T extends IModel> {
 
   public async findAll(): Promise<T[]> {
     try {
-      const data = await this.#requester.get();
+      const data = await this.#requester.getAll();
       return Promise.resolve(<T[]>data);
     } catch (error) {
       return Promise.reject(error);
@@ -29,7 +29,7 @@ export abstract class Repository<T extends IModel> {
 
   public async find(id: string): Promise<T> {
     try {
-      const data = await this.#requester.get(id);
+      const data = await this.#requester.getOne(id);
       return Promise.resolve(<T>data);
     } catch (error) {
       return Promise.reject(error);

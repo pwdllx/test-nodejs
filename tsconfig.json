@@ -19,7 +19,8 @@
       "ESNext"
     ],
     "types": [
-      "node"
+      "node",
+      "jest"
     ],
     "paths": {
       "@const": [
