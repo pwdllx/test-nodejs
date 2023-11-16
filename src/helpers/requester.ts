@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { IModel } from '../model';
 
+import { IModel } from '../interfaces/iModel.interface';
 export class Requester {
   private apiUrl: string;
 

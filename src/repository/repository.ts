@@ -1,5 +1,5 @@
-import { IModel } from '@model';
 import { Requester } from '../helpers/requester';
+import { IModel } from '../interfaces/iModel.interface';
 
 export abstract class Repository<T extends IModel> {
   #requester;
