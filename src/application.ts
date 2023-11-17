@@ -1,6 +1,6 @@
+import routes from '@route';
 import { json, urlencoded } from 'body-parser';
 import express, { Express } from 'express';
-import routes from '@route';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
@@ -15,8 +15,8 @@ application.use(
 
 // Set security & utilities
 application.use(helmet());
-application.use(json({ limit: '1b' }));
-application.use(urlencoded({ extended: false, limit: '1b' }));
+application.use(json({ limit: '1mb' }));
+application.use(urlencoded({ extended: false, limit: '1mb' }));
 
 // Route handlers
 application.use(routes);
