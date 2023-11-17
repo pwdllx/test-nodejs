@@ -1,4 +1,4 @@
-import { IModel } from './index';
+import { IModel, SerializeData } from './index';
 
 export class Brand implements IModel {
   #title: string;
@@ -15,5 +15,5 @@ export class Brand implements IModel {
     this.#title = title.substring(0, 20);
   }
 
-  public serialize():{[name:string]:string}{return{title: this.#title}}
+  public serialize():SerializeData{return{title: this.#title}}
 }

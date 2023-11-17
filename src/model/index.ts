@@ -1,5 +1,7 @@
+export type SerializeData = { [name: string]: string }
+
 export interface IModel {
-  serialize(): { [name: string]: string };
+  serialize(): SerializeData;
 }
 
 export * from './brand';

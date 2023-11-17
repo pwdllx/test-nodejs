@@ -1,12 +1,12 @@
 import { IModel } from '@model';
-import { Requester } from 'requester';
+import { Requester } from '../requester';
 
 export abstract class Repository<T extends IModel> {
-  #requester;
+  #requester: Requester<T>;
 
   constructor() {
     const path = this.constructor.name.replace('Repository', '').toLowerCase();
-    this.#requester = new Requester(`${process.env.API_URL}/${path}`);
+    this.#requester = new Requester<T>(`${process.env.API_URL}/${path}`);
   }
 
   public async create(model: T): Promise<T> {
@@ -20,7 +20,7 @@ export abstract class Repository<T extends IModel> {
 
   public async findAll(): Promise<T[]> {
     try {
-      const data = await this.#requester.get();
+      const data = await this.#requester.getAll();
       return Promise.resolve(<T[]>data);
     } catch (error) {
       return Promise.reject(error);
