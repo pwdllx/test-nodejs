@@ -19,7 +19,7 @@ return uuidv4() as string
 public async post(data: SerializeData): Promise<T> {
 try {
   const newId = this._generateId()
-  const storedData ={ ...data,id: newId };
+  const storedData ={id: newId, ...data, };
   await writeFile(this._apiUrl,JSON.stringify(storedData))
  return Promise.resolve(this.get(newId))
   
