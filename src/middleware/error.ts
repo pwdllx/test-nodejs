@@ -1,11 +1,20 @@
 import { Request, Response } from 'express';
 
+interface ErrorResponse {
+  code: number;
+  message: string;
+}
+
 export function restJson(
-  err: { code: number; message: string },
-  req: Request,
+  err: ErrorResponse,
+  _req: Request,
   res: Response
 ): void {
-  console.log('test');
-  res.status(200);
-  res.json(err);
+  res.status(err.code || 500); 
+  res.json({
+    error: {
+      code: err.code || 500,
+      message: err.message || 'Internal Server Error',
+    },
+  });
 }
